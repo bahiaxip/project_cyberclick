@@ -85,7 +85,7 @@ span.green{ color:green }
 			 <li>Múltiplos del 3 y del 5 por<span class="red">&nbsp;cyberclick</span></li>
 			</ul>
 		<button id="boton1" onclick="showList()">Mostrar1</button>
-		<button id="boton2">Mostrar2</button>
+		<button id="boton2" onclick="new ShowList()">Mostrar2</button>
 	</section>
 	<div class="content">
 		<div>
@@ -98,11 +98,11 @@ span.green{ color:green }
 		  let list="";	  
 	      for(let i=1;i<101;i++){
 			if(i%3==0 && i%5==0)	
-			    list=list+"<li style='color:red'>cyberclick</li>";
+			    list=list+"<li style='color:#ff0000'>cyberclick</li>";
 	        else if(i%3==0)		    
-			    list=list+"<li style='color:blue'>cyber</li>";
+			    list=list+"<li style='color:#273ae8'>cyber</li>";
 			else if(i%5==0)		    
-				list = list+"<li style='color:green'>click</li>";
+				list = list+"<li style='color:#009607'>click</li>";
 			else
 				list=list+"<li>"+i+"</li>";
 		  }	  
@@ -114,9 +114,28 @@ span.green{ color:green }
 			document.getElementById("box").innerHTML=createList();
 			console.timeEnd("loop")		
 		}
-
-
-
+	//Opción2(Mostrar2): Crear y mostrar lista con ES6
+		class ShowList{
+			constructor(){
+				this.showList();
+			}
+			showList(){
+				console.time("loop");				
+				let ul=document.querySelector("#box");
+				ul.innerHTML=new Array(100).fill().map((i,num)=>{
+					if(num!=0)
+						if(num%3==0 && num%5==0)
+							return `<li style='color:#ff90ac'>cyberclick</li>`
+						else if(num%3==0)
+							return `<li style='color:#27d2e8'>cyber</li>`
+						else if(num%5==0)
+							return `<li style='color:#00e9a3'>click</li>`
+						else
+							return `<li>${num}</li>`;		
+				}).join('');
+				console.timeEnd("loop");
+			}
+		}
 	</script>
 </body>
 </html>
