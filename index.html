@@ -84,7 +84,7 @@ span.green{ color:green }
 			 <li>Múltiplos del 5 por <span class="green">&nbsp;cick</san></li>
 			 <li>Múltiplos del 3 y del 5 por<span class="red">&nbsp;cyberclick</span></li>
 			</ul>
-		<button id="boton1">Mostrar</button>
+		<button id="boton1" onclick="showList()">Mostrar1</button>
 		<button id="boton2">Mostrar2</button>
 	</section>
 	<div class="content">
@@ -92,5 +92,31 @@ span.green{ color:green }
 			<ul id="box"></ul>
 		</div>
 	</div>
+	<script>
+	//Opción1(Mostrar1): Crear y mostrar lista con ES5
+		function createList(){			
+		  let list="";	  
+	      for(let i=1;i<101;i++){
+			if(i%3==0 && i%5==0)	
+			    list=list+"<li style='color:red'>cyberclick</li>";
+	        else if(i%3==0)		    
+			    list=list+"<li style='color:blue'>cyber</li>";
+			else if(i%5==0)		    
+				list = list+"<li style='color:green'>click</li>";
+			else
+				list=list+"<li>"+i+"</li>";
+		  }	  
+		  return list;
+		}
+
+		function showList(){
+			console.time("loop");			
+			document.getElementById("box").innerHTML=createList();
+			console.timeEnd("loop")		
+		}
+
+
+
+	</script>
 </body>
 </html>
